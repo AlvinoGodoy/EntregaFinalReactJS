@@ -1,52 +1,50 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+import '../ItemCount/ItemCount.css';
 
-const ItemCount = ({stockItems}) => {
+const ItemCount = ({ initial, stock, onAdd }) => {
+  const [count, setCount] = useState(parseInt(initial));
 
-    const [counter, setCounter] = useState(1);
-    const [stock,] = useState(stockItems);
+  const decrease = () => {
+    setCount(count - 1);
+  };
 
-    const incrementarStock = () => {
-        if (counter < stock) {
-            setCounter(counter + 1);
-        } 
-    }
+  const increase = () => {
+    setCount(count + 1);
+  };
 
-    const decrementarStock = () => {
-        if (counter > 1) {
-            setCounter(counter - 1)
-        }
-        
-    }
+  useEffect(() => {
+    setCount(parseInt(initial));
+  }, [initial]);
 
   return (
-    <div className="container" id="itemcount">
-      <div className="row mb-3">
-        <div className="col-md-2">
-          <div className="btn-group" role="group" aria-label="Basic outlined example">
-            <button type="button" className="btn btn-outline-primary" onClick={decrementarStock}>
-              -
-            </button>
-            <button type="button" className="btn btn-outline-primary">
-              {counter}
-            </button>
-            <button type="button" className="btn btn-outline-primary" onClick={incrementarStock}>
-              +
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-md-2">
-          <button type="button" className="btn btn-outline-primary">
-            Agregar al carrito
-          </button>
-        </div>
+    <div className="counter">
+      <button
+        disabled={count <= 1}
+        onClick={decrease}
+        className="btn btn-outline-secondary operacion"
+      >
+        -
+      </button>
+      <span className="mx-2">{String(count)}</span>
+      <button
+        disabled={count >= stock}
+        onClick={increase}
+        className="btn btn-outline-secondary operacion"
+      >
+        +
+      </button>
+
+      <div className="mt-3">
+        <button
+          disabled={stock <= 0}
+          onClick={() => onAdd(count)}
+          className="btn btn-primary operacion"
+        >
+          Agregar al carrito
+        </button>
       </div>
     </div>
   );
 };
 
 export default ItemCount;
-
-

@@ -1,0 +1,72 @@
+.info {
+  text-align: center;
+}
+
+form {
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.item-check {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.lab-check {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.error-campos {
+  color: #f44336;
+}
+
+.orden {
+  text-align: center;
+}
+
+checking {
+  text-align: center;
+  margin-top: 20px;
+}
+
+check-bt {
+  background-color: black;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+check-bt:hover {
+  background-color: black;
+}
+
+back-to-home {
+  background-color: #f44336;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+}
+
+back-to-home:hover {
+  background-color: #d3c82f;
+}

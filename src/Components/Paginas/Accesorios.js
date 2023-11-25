@@ -1,16 +1,20 @@
 import React from 'react';
-import arrayProducts from '../../Json/Products.json';
-import ItemList from '../ItemList/ItemList';
+import "./Paginas.css";
 
 const Accesorios = () => {
-  const accesorios = arrayProducts.filter(product => product.categoria === 'accesorios');
+
 
   return (
-    <div className="productos-container">
-      <h1>Accesorios</h1>
-      <ItemList item={accesorios} />
+    <div className="titulo-home">
+    <div className="titulo-paginas">
+      <h1>Lista de productos</h1>
+      <div className='contenido'>
+      <h5>¡Lo mejor esta por venir!</h5>
+      </div>
+    </div>
     </div>
   );
 };
 
 export default Accesorios;
+

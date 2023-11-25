@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import arrayProducts from "../../Json/Products.json";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  where,
+  query,
+} from "firebase/firestore";
 import ItemList from "../ItemList/ItemList";
 
 const ItemDetailContainer = () => {
@@ -8,30 +14,24 @@ const ItemDetailContainer = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await new Promise((resolve) => {
-          setTimeout(() => {
-            resolve(
-              id
-                ? arrayProducts.filter((product) => product.categoria === id)
-                : arrayProducts
-            );
-          }, 1000);
-        });
-        setItem(data);
-      } catch (error) {
-        console.log("Error:", error);
-      }
-    };
-    fetchData();
+    const queryDb = getFirestore();
+    const queryCollection = collection(queryDb, "item");
+    if (id) {
+      const queryFilter = query(queryCollection, where("categoryid", "==", id));
+      getDocs(queryFilter).then((res) =>
+        setItem(res.docs.map((p) => ({ id: p.id, ...p.data() })))
+      );
+    } else {
+      getDocs(queryCollection).then((res) =>
+        setItem(res.docs.map((p) => ({ id: p.id, ...p.data() })))
+      );
+    }
   }, [id]);
 
   return (
-    
-        <div>
-          <ItemList item={item} />
-        </div>
+    <div>
+      <ItemList item={item} />
+    </div>
   );
 };
 

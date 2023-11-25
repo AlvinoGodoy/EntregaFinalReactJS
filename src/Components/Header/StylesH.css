@@ -1,54 +1,55 @@
-/* StylesH.css */
-
 .myNavbar {
-    background-color: #40916c;
-    /* Color de fondo azul */
-    color: #fff;
-    /* Texto en color blanco */
+  background-color: #40916c;
+  /* Color de fondo azul */
+  color: #fff;
+  /* Texto en color blanco */
 }
 
-
 .myNavbar .nav-link {
-    font-family: 'Handjet', sans-serif;
-    font-family: 'Inter', sans-serif;
-    font-family: 'Montserrat', sans-serif;
-    font-family: 'Noto Serif', serif;
-    font-family: 'Raleway', sans-serif;
+  font-family: "Handjet", sans-serif;
+  font-family: "Inter", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Noto Serif", serif;
+  font-family: "Raleway", sans-serif;
 }
 
 .myNavbar a {
-    color: #fff;
-    font-size: 25px;
-    margin-right: 20px;
+  color: #fff;
+  font-size: 25px;
+  margin-right: 20px;
+  margin-bottom: 20px;
 }
 
 /* Estilo para el botón del Navbar Toggle */
 .myNavbar .navbar-toggler-icon {
-    background-color: #fff;
-
+  background-color: #fff;
 }
 
 /* Estilo para el Navbar Brand (logo) */
 
 .navbar-brand img {
-    max-width: 90px;
-    max-height: 90px;
-    border-radius: 50%;
-    margin-left: -80px;
-    /* Agrega un espacio entre la imagen y el borde izquierdo */
+  max-width: 90px;
+  max-height: 90px;
+  border-radius: 50%;
+  margin-left: -80px;
+  margin-top: 5px;
+  margin-bottom: -15px;
+
 }
 
 /* Estilo para los enlaces del Navbar */
 .navbar-nav {
-    margin-left: 250px;
-
+  margin-left: 250px;
 }
-
-
 
 /* Cambiar el color del enlace cuando se pasa el mouse por encima */
 .myNavbar .nav-link:hover {
-    background-color: #b7e4c7;
-    border-radius: 70%;
-    /* Color de fondo más oscuro al pasar el mouse */
+  background-color: #b7e4c7;
+  border-radius: 70%;
+
+}
+
+/* Regla de estilo para el icono del CartWidget */
+.btn .fa-dumbbell {
+  font-size: 30px;
 }

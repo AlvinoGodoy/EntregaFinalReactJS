@@ -1,26 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React from 'react'
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import arrayProducts from "../../Json/Products.json";
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import ItemDetail from "../ItemDetail/ItemDetail";
+import './ItemDetailContainer.css';
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState({});
   const { id } = useParams();
+  
 
   useEffect(() => {
-    const promesa = new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(arrayProducts.find((item) => item.id === parseInt(id)));
-      }, 1000);
-    });
-    promesa.then((data) => {
-      setItem(data);
-    });
+    const queryDb = getFirestore();
+    const queryDoc = doc(queryDb, 'item', id);
+    getDoc(queryDoc).then((res) => setItem({ id: res.id, ...res.data() }));
   }, [id]);
 
   return (
-    <div className="container mt-4">
-      <h1>Detalles del Producto</h1>
+    <div className="container mt-4 custom-container specific-container">
+      <h1 className="mb-4">Detalles del Producto</h1>
       <div className="row">
         <div className="col-md-6 offset-md-3">
           <ItemDetail item={item} />
@@ -28,6 +26,6 @@ const ItemDetailContainer = () => {
       </div>
     </div>
   );
-};
+};  
 
 export default ItemDetailContainer;
